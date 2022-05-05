@@ -33,6 +33,7 @@ import ConnectionStatus from "../components/ConnectionStatus";
 import Footer from "../components/Footer";
 import User from "../components/User";
 import Score from "../components/Score";
+import NewScore from "../components/NewScore";
 import fluteDuetAbc from "../music/fluteDuet.abc?raw";
 import fugueAbc from "../music/fugue.abc?raw";
 import bartokAbc from "../music/bartok.abc?raw";
@@ -300,7 +301,7 @@ function EditorPage() {
               </Box>
 
               <Box overflowX="auto">
-                <Score notes={abcString} darkMode={darkMode} />
+                <NewScore notes={abcString} darkMode={darkMode} />
               </Box>
             </Split>
           </Box>

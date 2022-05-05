@@ -2,4 +2,4 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: cargo run && npm run serve
+  web: cargo run && npm run dev

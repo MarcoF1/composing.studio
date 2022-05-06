@@ -221,48 +221,31 @@ function EditorPage() {
             About
           </Heading>
           <Text fontSize="sm" mb={1.5}>
-            <strong>Composing Studio</strong> is an open-source collaborative
-            web application that lets people write and engrave music together
-            using{" "}
-            <Link
-              color="blue.600"
-              fontWeight="semibold"
-              href="https://abcnotation.com/"
-              isExternal
-            >
-              ABC notation
-            </Link>
-            .
+            <strong>Gamelan Studio</strong> is an open-source collaborative web
+            application that lets people write and engrave Gamelan music
+            together using the system learned in MIT's 21M.292.
+          </Text>
+          <Text fontSize="sm" mb={1.5}>
+            All notes need at least 1 space in between eachother in order for it
+            to be picked up by the music player. To switch between the supported
+            instruments (Gangsa, Ugal, Jegogan), you need to add a 'g', 'u', or
+            'j' respectively. A gong tone can be used at any point with a 'G'
+            and a rest can be denoted with a '-'. The different instruments will
+            play their notes at the same time, but notes from the same
+            instrument will play sequentially.
+          </Text>
+          <Text fontSize="sm" mb={1.5}>
+            To denote a note such as note 1, you should type a '1'. To denote a
+            note such as a low 6, you should type '6*'
+          </Text>
+          <Text fontSize="sm" mb={1.5}>
+            By updating the "Beats per Second" input with a number, you can
+            change the speed at which the music is played at.
           </Text>
           <Text fontSize="sm" mb={1.5}>
             Share a link to this studio with others, and they'll be able to edit
             from their browser while seeing your changes in real time.
           </Text>
-          <Text fontSize="sm" mb={1.5}>
-            Built using Rust and TypeScript. See the{" "}
-            <Link
-              color="blue.600"
-              fontWeight="semibold"
-              href="https://github.com/ekzhang/composing.studio"
-              isExternal
-            >
-              GitHub repository
-            </Link>{" "}
-            for details.
-          </Text>
-
-          <Button
-            size="sm"
-            colorScheme={darkMode ? "whiteAlpha" : "blackAlpha"}
-            borderColor={darkMode ? "purple.400" : "purple.600"}
-            color={darkMode ? "purple.400" : "purple.600"}
-            variant="outline"
-            leftIcon={<VscRepoPull />}
-            mt={1}
-            onClick={handleLoadSample}
-          >
-            Load an example
-          </Button>
         </Container>
         <Flex flex={1} minW={0} h="100%" direction="column" overflow="hidden">
           <HStack

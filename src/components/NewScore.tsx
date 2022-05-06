@@ -1,8 +1,10 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Box, SliderProvider, Stack } from "@chakra-ui/react";
 import abcjs from "abcjs";
 import { nanoid } from "nanoid";
 import "abcjs/abcjs-audio.css";
+
+import "./NewScore.css";
 
 // play sounds
 import useSound from "use-sound";
@@ -228,7 +230,7 @@ function parseNotes(notes: string) {
 }
 
 function NewScore({ notes, darkMode }: ScoreProps) {
-  const beatsPerSecond: number = 1;
+  const [beatsPerSecond, setBeatsPerSecond] = useState<number>(1);
   const playTheseNotes: number[][] = parseNotes(notes);
   console.log(playTheseNotes);
 
@@ -275,7 +277,7 @@ function NewScore({ notes, darkMode }: ScoreProps) {
     }
   }
 
-  const duration: number = 500;
+  const duration: number = 1000;
 
   let notesMenu: any = [];
 
@@ -310,10 +312,20 @@ function NewScore({ notes, darkMode }: ScoreProps) {
           </p>
         );
       })}
-
       <div>{notesMenu}</div>
-
+      <div className="text-input">
+        <input
+          id="number"
+          type="number"
+          onChange={(e) =>
+            setBeatsPerSecond(e.target.value as unknown as number)
+          }
+          value={beatsPerSecond}
+        ></input>
+        <p>Beats Per Second</p>
+      </div>
       <button
+        className="btn"
         onClick={() => {
           // play the notes on a schedule
 
@@ -329,16 +341,20 @@ function NewScore({ notes, darkMode }: ScoreProps) {
                 // play the notes for the instrument
                 if (notes[i] != undefined) {
                   // don't play the note if its undefined
-                  playInstrumentNote(instrumentId, notes[i], duration);
+                  playInstrumentNote(
+                    instrumentId,
+                    notes[i],
+                    duration / beatsPerSecond
+                  );
                 }
               }
 
               if (i < notes.length - 1) {
                 // if theres more notes play them
-                setTimeout(run, duration);
+                setTimeout(run, duration / beatsPerSecond);
               }
               i++; // next note
-            }, duration);
+            }, duration / beatsPerSecond);
           });
         }}
       >
